@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="BeginGameSkin" width="750" height="1334" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
 	<w:Config id="18d396e4e42" ></w:Config>
-	<e:Button id="myButton" label="" x="172" y="248" anchorOffsetX="0" width="317" anchorOffsetY="0" height="217">
+	<e:Button id="myButton" label="" anchorOffsetX="0" anchorOffsetY="0" x="147" y="167">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
 			<e:Image width="100%" height="100%" source="anniu_png"/>
@@ -10,4 +10,5 @@
 		</e:skinName>
 	</e:Button>
 	<e:Label id="mLab" text="sdfsdf" fontFamily="ddfd" horizontalCenter="-44" top="561"/>
+	<e:DataGroup width="334" height="200" x="230" y="892" anchorOffsetX="0"/>
 </e:Skin>

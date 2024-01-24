@@ -7,3 +7,11 @@ egret学习
 *public myButton:eui.Button;(复制自定义，粘贴)
  button上的皮肤快捷模板，直接从resource资源面板中拖入图片（不是拖工程里的资源）
 
+*绑定exml的2种方式(一般使用第一种)：
+    1，赋值skinName：
+    public constructor() {
+        super();
+        this.skinName = 'xxx.exml'
+    }
+    2，default.thm.json 里skins 对象赋值：
+        "BeginGame": "resource/eui_skins/BeginGame.exml"

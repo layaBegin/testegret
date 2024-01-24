@@ -9,4 +9,5 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<e:Label id="mLab" text="sdfsdf" fontFamily="ddfd" horizontalCenter="-44" top="561"/>
 </e:Skin>

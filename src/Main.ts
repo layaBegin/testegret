@@ -160,6 +160,8 @@ class Main extends eui.UILayer {
 
         //添加自己做的button
         let cusButton = new BeginGame()
+        
+
         this.addChild(cusButton)
 
     }

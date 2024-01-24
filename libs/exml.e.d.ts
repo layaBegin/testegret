@@ -1,3 +1,5 @@
+declare class BeginGameSkin extends eui.Skin{
+}
 declare module skins{
 	class ButtonSkin extends eui.Skin{
 	}

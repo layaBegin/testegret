@@ -31,6 +31,7 @@
 		"resource/eui_skins/ScrollerSkin.exml",
 		"resource/eui_skins/test.exml",
 		"resource/eui_skins/TestComponent.exml",
+		"resource/eui_skins/TestSkin.exml",
 		"resource/eui_skins/TextInputSkin.exml",
 		"resource/eui_skins/ToggleSwitchSkin.exml",
 		"resource/eui_skins/VScrollBarSkin.exml",

@@ -42,6 +42,8 @@ declare class test extends eui.Skin{
 }
 declare class TestComponentSkin extends eui.Skin{
 }
+declare class TestSkin extends eui.Skin{
+}
 declare module skins{
 	class TextInputSkin extends eui.Skin{
 	}

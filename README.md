@@ -11,7 +11,8 @@ egret学习
     1，赋值skinName：
     public constructor() {
         super();
-        this.skinName = 'xxx.exml'
+        this.skinName = 'resource/eui_skins/TestSkin.exml'
+        (注意：请使用正斜杠，反斜杠识别不了)
     }
     2，default.thm.json 里skins 对象赋值：
         "BeginGame": "resource/eui_skins/BeginGame.exml"

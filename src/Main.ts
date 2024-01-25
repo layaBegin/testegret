@@ -158,11 +158,9 @@ class Main extends eui.UILayer {
         // button.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onButtonClick, this);
 
 
-        //添加自己做的button
-        let cusButton = new BeginGame()
-        
-
-        this.addChild(cusButton)
+        //添加自己做的布局
+        let buju = new TestBuju()
+        this.addChild(buju)
 
     }
     /**

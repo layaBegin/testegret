@@ -2,6 +2,8 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 	
 	
 
+	public mGroup:eui.Group;
+
 	// count = 0
 	
 	public constructor() {
@@ -24,6 +26,12 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 	
 	public init(){
 		// this.myButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.buttonHandler,this)
+
+		let lab = new eui.Label()
+		lab.text = "手动创建的label"
+		lab.size = 40
+		lab.textColor = 0xff0000
+		this.mGroup.addChild(lab)
 	}
 
 	// buttonHandler(e: egret.TouchEvent){

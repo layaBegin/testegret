@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="TestSkin" width="600" height="1124" xmlns:e="http://ns.egret.com/eui">
-	<e:Group width="271" height="319.33" y="239.67" anchorOffsetY="0" anchorOffsetX="0" horizontalCenter="35.5">
+<e:Skin class="TestSkin" width="600" height="1124" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Group id="mGroup" height="319.33" anchorOffsetY="0" anchorOffsetX="0" left="43" top="26" width="325">
 		<e:Button label="Button" x="47" y="71"/>
 		<e:Button label="Button" x="140" y="183"/>
+		<e:Button label="Button" x="150" y="193"/>
+		<e:Button label="Button" x="160" y="203"/>
+		<e:Button label="Button" x="170" y="213"/>
+		<e:Button label="Button" x="180" y="223"/>
+		<e:Button label="Button" x="190" y="233"/>
+		<e:Button label="Button" x="200" y="243"/>
+		<e:Button label="Button" x="210" y="253"/>
+		<e:Button label="Button" x="220" y="263"/>
+		<e:Button label="Button" x="230" y="273"/>
+		<e:Button label="Button" x="240" y="283"/>
+		<e:Button label="Button" x="250" y="293"/>
+		<e:layout>
+			<e:TileLayout rowAlign="justifyUsingHeight" columnAlign="justifyUsingWidth" horizontalAlign="left" verticalAlign="middle" columnWidth="100" requestedColumnCount="3"/>
+		</e:layout>
 	</e:Group>
 </e:Skin>

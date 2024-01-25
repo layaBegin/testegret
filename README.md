@@ -16,3 +16,6 @@ egret学习
     }
     2，default.thm.json 里skins 对象赋值：
         "BeginGame": "resource/eui_skins/BeginGame.exml"
+
+*group(4种布局方式):
+    BasicLayout，HorizontalLayout，VerticalLayout，TileLayout（网格布局）

@@ -23,12 +23,16 @@ class BeginGame extends eui.Component implements  eui.UIComponent {
 	
 	public init(){
 		this.myButton.addEventListener(egret.TouchEvent.TOUCH_TAP,this.buttonHandler,this)
+
+		
 	}
 
 	buttonHandler(e: egret.TouchEvent){
 		this.count ++ 
 		egret.log("===点击次数：",this.count)
 		this.mLab.text = "点击了" + this.count + "次"
+		this.mLab.textColor = 0xff0000
+		this.mLab.size = this.count
 	}
 	
 }

@@ -5,7 +5,8 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 	public mGroup:eui.Group;
 
 	// count = 0
-	
+	public mScroll:eui.Scroller;
+
 	public constructor() {
 		super();
 		this.skinName = "resource/eui_skins/TestSkin.exml"

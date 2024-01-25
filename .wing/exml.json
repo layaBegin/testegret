@@ -1,6 +1,6 @@
 {
   "global": {
-    "globalAutoLayerMarkEnable": true,
+    "globalAutoLayerMarkEnable": false,
     "globalAdsorbEnable": false,
     "globalRulerEnable": false,
     "globalBindingDataTestObj": []
@@ -31,5 +31,14 @@
     "path": "BeginGame.ts",
     "class": "BeginGame",
     "parentPath": ""
+  },
+  "18d3e97567e": {
+    "backgroundX": 0,
+    "backgroundY": 0,
+    "backgroundWidth": -1,
+    "backgroundHeight": -1,
+    "useBgImage": true,
+    "useBgColor": true,
+    "backgroundAlpha": 100
   }
 }

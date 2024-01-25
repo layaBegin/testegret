@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="TestSkin" width="600" height="1124" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Group id="mGroup" height="319.33" anchorOffsetY="0" anchorOffsetX="0" left="43" top="26" width="325">
+	<w:Config id="18d3e97567e"/>
+	<e:Group id="mGroup" height="319.33" anchorOffsetY="0" anchorOffsetX="0" left="43" top="26" width="325" visible="false">
 		<e:Button label="Button" x="47" y="71"/>
 		<e:Button label="Button" x="140" y="183"/>
 		<e:Button label="Button" x="150" y="193"/>
@@ -18,4 +19,14 @@
 			<e:TileLayout rowAlign="justifyUsingHeight" columnAlign="justifyUsingWidth" horizontalAlign="left" verticalAlign="middle" columnWidth="100" requestedColumnCount="3"/>
 		</e:layout>
 	</e:Group>
+	<e:Image width="471" height="259" x="77" y="134" anchorOffsetX="0" anchorOffsetY="0" fillMode="clip" scale9Grid="224,62,97,376" source="anniu_png"/>
+	<e:Scroller id="mScroll" width="388" height="200" x="83" y="528" anchorOffsetX="0">
+		<e:Group anchorOffsetX="0" width="395">
+			<e:Image width="120" height="308" x="133" y="-1" anchorOffsetX="0" anchorOffsetY="0" source="toast_text_bg_png" scale9Grid="23,27,9,19" scaleX="1" scaleY="1"/>
+			<e:Button label="Button" x="152" y="261" scaleX="1" scaleY="1"/>
+			<e:layout>
+				<e:BasicLayout/>
+			</e:layout>
+		</e:Group>
+	</e:Scroller>
 </e:Skin>

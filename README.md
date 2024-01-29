@@ -19,3 +19,24 @@ egret学习
 
 *group(4种布局方式):
     BasicLayout，HorizontalLayout，VerticalLayout，TileLayout（网格布局）
+
+*容器的深度
+    sprcon.addChildAt( sprNew, 1 );
+    sprcon.removeChildAt( 2 );
+    //删除所有子对象
+    sprcon.removeChildren() 
+    交换深度的两种方式
+    sprcon.swapChildren( spr1, spr2 ); 第二种方法进行两个方块深度互换。
+    sprcon.swapChildrenAt( 0, 1 );
+*遮罩
+    mySprite.mask = maskSprite;
+
+*Event事件的用法
+    egret.Event， addEventListener，removeEventListener
+    priority 事件的优先级 public addEventListener(type:string, listener:Function, thisObject:any, useCapture:boolean = false, priority:number = 0)
+    触摸事件egret.TouchEvent
+
+*位图加载 new egret.ImageLoader
+    跨域处理imgLoader.crossOrigin = 'anonymous'
+*音频，视频的加载与播放
+    this.video = new egret.Video();

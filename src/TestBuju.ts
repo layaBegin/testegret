@@ -5,6 +5,9 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 	public mGroup:eui.Group;
 
 	public mScroll:eui.Scroller;
+	public mCheckBox:eui.CheckBox;
+	public mToggleSwitch:eui.ToggleSwitch;
+
 
 	public constructor() {
 		super();
@@ -29,6 +32,57 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 		// this.loadImage()
 		this.loadRemoteText()
 		this.loadRemoteImage()
+		this.setCheckBox()
+		this.initRadioButtonWithGroup()
+		this.setToggleSwitch()
+	}
+
+	setToggleSwitch(){
+		this.mToggleSwitch.addEventListener(eui.UIEvent.CHANGE, this.changeToggleSwitch, this);
+	}
+
+	changeToggleSwitch(evt:eui.UIEvent){
+		egret.log("====event.target:",evt.target)
+		egret.log("====event.target.selected:",evt.target.selected)
+	}
+
+
+	//单选框的使用
+	private initRadioButtonWithGroup():void {
+		var radioGroup: eui.RadioButtonGroup = new eui.RadioButtonGroup();
+		radioGroup.addEventListener(eui.UIEvent.CHANGE, this.radioChangeHandler, this);
+		var rdb: eui.RadioButton = new eui.RadioButton();
+		rdb.label = "Select_1";
+		rdb.value = "Select 1";
+		rdb.group = radioGroup;
+		this.addChild(rdb);
+		var rdb2: eui.RadioButton = new eui.RadioButton();
+		rdb2.y = 30;
+		rdb2.label = "Select_2";
+		rdb2.value = "Select 2";
+		rdb2.selected = true;//默认选项
+		rdb2.group = radioGroup;
+		this.addChild(rdb2);
+	}
+
+	private radioChangeHandler(evt:eui.UIEvent):void {
+		var radioGroup: eui.RadioButtonGroup = evt.target;
+		console.log(radioGroup.selectedValue);
+	}
+
+	//复选框的使用
+	setCheckBox(){
+		this.mCheckBox.addEventListener(
+			eui.UIEvent.CHANGE,
+			this.onClickCheckBox.bind(this),this
+		);
+	}
+
+	onClickCheckBox(evt:eui.UIEvent){
+		egret.log(evt.target.selected)
+		if(evt.target.selected){
+			this.mCheckBox.enabled = false;//禁用复选框
+		}
 	}
 	
 	public init(){

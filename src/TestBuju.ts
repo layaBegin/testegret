@@ -7,7 +7,16 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 	public mScroll:eui.Scroller;
 	public mCheckBox:eui.CheckBox;
 	public mToggleSwitch:eui.ToggleSwitch;
+	public mSlider:eui.HSlider;
+	public mProgressBar:eui.ProgressBar;
+	public mEditablText:eui.EditableText;
 
+
+	//新建一个背景图片
+    private background:eui.Image = new eui.Image();
+
+
+	private toggleBtns:Array<eui.ToggleButton> = [];
 
 	public constructor() {
 		super();
@@ -35,6 +44,174 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 		this.setCheckBox()
 		this.initRadioButtonWithGroup()
 		this.setToggleSwitch()
+		this.initToggleBar()
+		this.initHSlider()
+		// this.initProgressBar()
+		this.setInput()
+		this.testScroller()
+		this.testDataGroup()
+		this.testTween()
+	}
+
+	//测试缓动动画
+	testTween(){
+		var shp:egret.Shape = new egret.Shape();
+        shp.graphics.beginFill( 0x00ff00 );
+        shp.graphics.drawRect( 0, 0, 100, 100 );
+        shp.graphics.endFill();
+        shp.x = 50;
+        this.addChild( shp );
+        // var tw = egret.Tween.get( shp );
+        // tw.wait(1000).to( {x:150}, 1000 );
+		var tw = egret.Tween.get( shp, { loop:true} );
+		tw.to( {x:250}, 500 ).call( function(){ console.log( "右上角" ) } ).wait( 100 )
+    	.to( {y:250}, 500 ).call( function(){ console.log( "右下角" ) } ).wait( 100 )
+    	.to( {x:50}, 500 ).call( function(){ console.log( "左下角" ) } ).wait( 100 )
+    	.to( {y:50}, 500 ).call( function(){ console.log( "左上角" ) } ).wait( 100 );
+	}
+
+
+	private testDataGroup(){
+		//先创建一个数组
+        var sourceArr:any[] = [];
+        for (var i:number = 1; i < 5; i++){
+        	//给数据中添加一个含有"label"属性的对象
+            sourceArr.push({label:"item"+i});
+        }
+        //用ArrayCollection包装
+        var myCollection:eui.ArrayCollection = new eui.ArrayCollection(sourceArr);
+
+        var dataGroup:eui.DataGroup = new eui.DataGroup();
+        dataGroup.dataProvider = myCollection;
+        dataGroup.percentWidth = 100;
+        dataGroup.percentHeight = 100;
+        this.addChild(dataGroup);
+
+        dataGroup.itemRenderer = LabelRenderer;
+	}
+
+	private testScroller(){
+		//创建一个列表
+        var list = new eui.List();
+        list.dataProvider = new eui.ArrayCollection([1, 2, 3, 4, 5]);
+		//创建一个 Scroller
+        var scroller = this.mScroll;
+        scroller.height = 160;
+        scroller.viewport = list;
+        this.addChild(scroller);
+		//创建一个按钮，点击后改变 Scroller 滚动的位置
+        var btn = new eui.Button();
+        btn.x = 200;
+        this.addChild(btn);
+        btn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.moveScroller,this);
+	}
+
+	//  private moveScroller():void{
+    // 	//点击按钮后改变滚动的位置
+    //     var sc = this.mScroll;
+    //     sc.viewport.scrollV += 10;
+    //     if ((sc.viewport.scrollV + sc.height) >= sc.viewport.contentHeight) {
+    //       console.log("滚动到底部了");
+    //     }
+    // }
+
+	private moveScroller(): void {
+		//点击按钮后改变滚动的位置
+		var sc = this.mScroll;
+		sc.viewport.scrollV += 10;
+
+		if((sc.viewport.scrollV + sc.height) >= sc.viewport.contentHeight) {
+			console.log("滚动到底部了");
+		}
+		//停止正在滚动的动画
+		sc.stopAnimation();
+	}
+
+
+	//输入文本
+	private setInput(){
+		this.mEditablText.addEventListener(egret.Event.CHANGE,this.onChang,this);
+		//指定图片素材，这里使用上面的图片，并放入相应文件夹下    
+        this.background.source = "resource/assets/Slider/track.png";  
+        //指定图片的九宫格，我们可以复习一下前面章节的内容
+        this.background.scale9Grid = new egret.Rectangle(1.5,1.5,20,20); 
+        //指定其宽和高，用来当做背景.
+        this.background.width = 500;                                       
+        this.background.height = 200;
+        //将背景添加到显示列表
+        this.addChild(this.background);                                    
+        //指定默认文本，用户可以自己输入，也可以将其删除
+        this.mEditablText.text = "my EditableText";
+		this.mEditablText.textColor = 0x2233cc;                          
+        //指定我们的文本输入框的宽和高    
+        this.mEditablText.width = this.background.width;                 
+        this.mEditablText.height = this.background.height; 
+        //设置我们的文本左边距为零
+        this.mEditablText.left = 0;  
+		
+		// this.mEditablText.displayAsPassword = true;   
+	}
+
+	private onChang(e:egret.Event){
+    	egret.log(e.target.text);
+	}
+
+	//进度条
+	private initProgressBar():void{
+		this.mProgressBar.maximum = 210;//设置进度条的最大值
+		this.mProgressBar.minimum = 0;//设置进度条的最小值
+		this.mProgressBar.width = 200;
+		this.mProgressBar.height = 30;
+		// this.addChild(this.mProgressBar);
+		this.mProgressBar.value = 42;//设置进度条的初始值
+		//用timer来模拟加载进度
+		var timer:egret.Timer = new egret.Timer(10,0);
+		timer.addEventListener(egret.TimerEvent.TIMER,this.timerHandler,this);
+		timer.start();
+	}
+	private timerHandler():void{
+		this.mProgressBar.value += 1;
+		egret.log("===进度：",this.mProgressBar.value)
+		if(this.mProgressBar.value>=210){this.mProgressBar.value=0;}
+	}
+
+	
+
+	//滑动器
+	private initHSlider():void {
+		var hSlider: eui.HSlider = this.mSlider;
+		hSlider.width = 200;
+		hSlider.minimum = 0;//定义最小值
+		hSlider.maximum = 100;//定义最大值
+		hSlider.value = 10;//定义默认值
+		hSlider.addEventListener(eui.UIEvent.CHANGE, this.changeSliderHandler, this);
+		this.addChild(hSlider);
+	}
+
+	private changeSliderHandler(evt: eui.UIEvent): void {
+		console.log(evt.target.value);
+	}
+
+	
+	private initToggleBar():void {
+		for (var i: number = 0; i < 4; i++) {
+			var btn: eui.ToggleButton = new eui.ToggleButton();
+			btn.label = i + 1 + "";
+			btn.y = 100;
+			btn.width = 80;
+			btn.height = 60;
+			btn.x = 20 + i * 80;
+			btn.addEventListener(eui.UIEvent.CHANGE, this.toggleChangeHandler, this);
+			this.toggleBtns.push(btn);
+			this.addChild(btn);
+		}
+	}
+
+	private toggleChangeHandler(evt: eui.UIEvent) {
+		for (var i: number = 0; i < this.toggleBtns.length; i++) {
+			var btn: eui.ToggleButton = this.toggleBtns[i];
+			btn.selected = (btn == evt.target);
+		}
 	}
 
 	setToggleSwitch(){
@@ -213,7 +390,7 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
 	}
 
 	private onAddToStage( evt:egret.Event ) {
-        RES.getResByUrl( "resource/font/common_chip_number_font.fnt", this.onLoadComplete, this, RES.ResourceItem.TYPE_FONT );
+        RES.getResByUrl( "resource/font/clock.fnt", this.onLoadComplete, this, RES.ResourceItem.TYPE_FONT );
     }
 
     private _bitmapText:egret.BitmapText;
@@ -224,7 +401,7 @@ class TestBuju extends eui.Component implements  eui.UIComponent {
         this._bitmapText.y = 300;
 
         this.addChild( this._bitmapText );
-		this._bitmapText.text = "w123432"
+		this._bitmapText.text = "123432"
     }
 
 	//加载本地图片
